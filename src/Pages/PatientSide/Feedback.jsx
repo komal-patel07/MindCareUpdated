@@ -74,7 +74,7 @@ const Feedback = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 p-4">
+    <div className="flex justify-center items-center min-h-screen  w-screen  bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 p-4">
       <div className="w-full max-w-4xl shadow-2xl bg-white rounded-lg p-6 md:p-10">
         <h2 className="text-2xl font-semibold mb-6 text-center">Patient Feedback Form</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

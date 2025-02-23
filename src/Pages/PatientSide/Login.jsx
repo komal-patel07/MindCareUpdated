@@ -50,7 +50,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full border min-h-screen bg-gradient-to-bl  from-rose-100 via-gray-100 to-gray-200   ">
+    <div className=" w-screen  flex-col flex justify-center items-center  min-h-screen bg-gradient-to-bl  from-rose-100 via-gray-100 to-gray-200   ">
       <div className="flex flex-col md:flex-row w-full max-w-5xl rounded-lg overflow-hidden shadow-xl p-6 bg-white">
         {/* Left Section */}
         <div className=" mb-6">
@@ -143,8 +143,9 @@ export default function Login() {
             </Link>
           </p>
         </div>
+        <Toaster richColors />
+
       </div>
-      <Toaster richColors />
     </div>
   );
 }

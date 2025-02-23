@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Input } from "@/components/ui/Input"; 
-import { Button1 } from "../../components/ui/Btn";
+import { Input } from "@/components/Custom/Input"; 
+import { Button1 } from "../../components/Custom/Btn";
 import { motion } from "framer-motion";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { Toaster, toast } from "sonner";

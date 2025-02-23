@@ -15,8 +15,8 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <div className="px-5 lg:px-2 ">
-      <div className="flex justify-between items-center bg-gradient-to-bl from-rose-100">
+    <div className="  lg:px-2 ">
+      <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center px-5 text-xl sm:text-2xl md:text-3xl font-[Snowburst_One]">
           <span className="text-2xl sm:text-3xl md:text-5xl">M</span>ind Care.

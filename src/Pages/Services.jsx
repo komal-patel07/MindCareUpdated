@@ -582,7 +582,7 @@ const sections = [
       )
   },{
     id:"SarvatoTherapy",
-    title:"Sarvato_Therapy",
+    title:"Sarvato Therapy",
     content:(<div className="scrollable">
         <p className="py-3">
           Sarvato Therapy is a holistic mental health approach that integrates multiple therapeutic techniques to enhance emotional well-being, reduce stress, and promote overall mental clarity. This therapy is designed to address various psychological and emotional concerns through a combination of personalized strategies.

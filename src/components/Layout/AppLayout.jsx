@@ -19,8 +19,8 @@ export default function AppLayout({ children }) {
 
   return (   <>   {rHeaderFooter ? (
 
-    <div className="flex justify-center ">
-        <div className="w-400 h-184  bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 ">
+    <div className="flex mx-3  justify-center items-center  ">
+        <div className="min-w-screen h-184  bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 ">
           <Header />
           <div className="bg-white">
           <Outlet /></div>

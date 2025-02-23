@@ -2,17 +2,17 @@ import BoyImg from "@/assets/Layer.svg";
 import Depression from "@/assets/Triggers-And-Mental-Illness.jpg";
 import PersonalityDesorder from "@/assets/person-suffering-from-ptsd.jpg";
 import Anxiety from "@/assets/young-man-hoodie-leaning-face-hand-looking-tired-front-view.jpg";
-import Button from "@/components/ui/Btn";
+import Button from "@/components/Custom/Btn";
 import yoo_one from "@/assets/yoo-one.jpg";
 import beard_one from "@/assets/beard-one.jpg";
 import hat_one from "@/assets/hat-one.jpg";
 import { Phone, Users, Pill, User, Brain, Leaf } from "lucide-react";
 import { FaChild } from "react-icons/fa";
 import LadyImage from "@/assets/image-Photoroom.png";
-import Service from "@/components/ui/Service";
+import Service from "@/components/Custom/Service";
 import Two_home from "@/assets/doctor-examining-chest-patient.jpg";
 import "@/App.css"; // Import your CSS file
-import FeedbackCart from "@/components/ui/FeedbackCart";
+import FeedbackCart from "@/components/Custom/FeedbackCart";
 import {
   ResponsiveContainer,
   BarChart,
@@ -23,7 +23,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { Card, CardContent } from "@/components/ui/Card";
+import { Card, CardContent } from "@/components/Custom/Card";
 import { motion } from "framer-motion";
 import {
   containerVariants,
@@ -52,7 +52,7 @@ export default function HomePage() {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1 }}
-    className="flex flex-row gap-10  justify-between bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200"
+    className="flex flex-row gap-10 justify-between bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200"
   >
     <div className="text-left my-30 px-20 py-20 w-1/2">
       <div>
@@ -327,7 +327,7 @@ export default function HomePage() {
   </div>
 
   {/* Fifth Section: Bar Chart */}
-  <div className="flex flex-col md:flex-row justify-evenly items-center bg-white p-10">
+  <div className="flex flex-col md:flex-row justify-evenly items-center gap-x-60  bg-white p-10">
     <div className="max-w-md mx-1 mb-10 md:mb-0">
       <h1 className="text-3xl mb-5">Measure the program wellness impact</h1>
       <p className="text-gray-600 mb-5">
