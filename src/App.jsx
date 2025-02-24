@@ -8,8 +8,11 @@ import Services from "./Pages/Services.jsx";
 import SignupForm from "./Pages/PatientSide/SignupForm.jsx";
 import Feedback from "./Pages/PatientSide/Feedback.jsx";
 import Error from "./Pages/Error.jsx";
+import First from "./Pages/Questions/First.jsx";
 import { PatientSignUpProvider } from "./Context/PatientSignUpContext.jsx";
 import PatientDashboard from "./Pages/PatientSide/PatientDashboard.jsx";
+import Second from "./Pages/Questions/Second.jsx";
+import Question from "./Pages/Questions/Question.jsx";
 function App() {
   const router = createBrowserRouter([
     {
@@ -43,6 +46,21 @@ function App() {
             element:(
               <PatientDashboard/>
             )
+          
+        },
+        ,{
+          path:"/Question",
+          element:
+            <Question/>,
+            children:[{
+              path:"First",
+              element:<First/>
+            },
+            {
+              path:"Second",
+              element:<Second/>
+            },
+          ]
           
         },
         {

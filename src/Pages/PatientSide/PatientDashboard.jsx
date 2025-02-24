@@ -28,7 +28,11 @@ export default function PatientDashboard() {
             </motion.div>
           </h2>
         </div> */}
+        <div className="">
+          <Profile />
+        </div>
         <div className=" flex gap-5">
+
           <div>
             <PieChartComponent />
           </div>
@@ -39,9 +43,7 @@ export default function PatientDashboard() {
             <PieChartNoSeparator />
           </div>
         </div>
-        <div className="">
-          <Profile />
-        </div>
+        
       </div>
     </div>
   );

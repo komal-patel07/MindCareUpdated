@@ -5,7 +5,7 @@ import { Toaster, toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom"; // Added useNavigate import
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-
+import {  buttonVariants} from "@/components/Animation/HomePageAnimation"
 export default function Login() {
   const { handleLogin } = useContext(PatientSignUpContext);
   const navigate = useNavigate(); // Initialized useNavigate
@@ -53,11 +53,12 @@ export default function Login() {
     <div className=" w-screen  flex-col flex justify-center items-center  min-h-screen bg-gradient-to-bl  from-rose-100 via-gray-100 to-gray-200   ">
       <div className="flex flex-col md:flex-row w-full max-w-5xl rounded-lg overflow-hidden shadow-xl p-6 bg-white">
         {/* Left Section */}
-        <div className=" mb-6">
-          <motion.div
-            className="w-full md:w-2/3  "
-            whileHover={{ scale: 1.0 }}
-            whileTap={{ scale: 0.97 }}
+        <div className=" mb-6 ">
+        <motion.div
+            className="w-55"
+            variants={buttonVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <button
               onClick={() => navigate(-1)} // Updated to use navigate

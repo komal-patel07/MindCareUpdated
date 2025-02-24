@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import { Input } from "@/components/Custom/Input"; 
+import { Input } from "@/components/Custom/Input";
 import { Button1 } from "../../components/Custom/Btn";
 import { motion } from "framer-motion";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 import { PatientSignUpContext } from "../../Context/PatientSignUpContext";
+import { buttonVariants } from "@/components/Animation/HomePageAnimation";
 
 const SignupForm = () => {
   const { Signup } = useContext(PatientSignUpContext);
@@ -33,10 +34,16 @@ const SignupForm = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  const validateFullName = (value) => (value.trim() ? "" : "Full Name is required.");
-  const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid email.";
-  const validateUsername = (value) => (value.trim() ? "" : "Username is required.");
-  const validatePassword = (value) => /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}$/.test(value) ? "" : "Password must be 6+ chars, include letters, a number, and a special character.";
+  const validateFullName = (value) =>
+    value.trim() ? "" : "Full Name is required.";
+  const validateEmail = (value) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid email.";
+  const validateUsername = (value) =>
+    value.trim() ? "" : "Username is required.";
+  const validatePassword = (value) =>
+    /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{6,}$/.test(value)
+      ? ""
+      : "Password must be 6+ chars, include letters, a number, and a special character.";
   const validateDOB = (value) => {
     if (!value) return "Date of Birth is required.";
     const birthYear = new Date(value).getFullYear();
@@ -45,8 +52,12 @@ const SignupForm = () => {
     return age >= 1 && age <= 120 ? "" : "Invalid age. Must be 1-120.";
   };
   const validateGender = (value) => (value ? "" : "Gender is required.");
-  const validatePrimaryConcern = (value) => (value ? "" : "Primary concern is required.");
-  const validateOtherConcern = (value) => (formData.primaryConcern === "Other" && !value.trim() ? "Please specify your concern." : "");
+  const validatePrimaryConcern = (value) =>
+    value ? "" : "Primary concern is required.";
+  const validateOtherConcern = (value) =>
+    formData.primaryConcern === "Other" && !value.trim()
+      ? "Please specify your concern."
+      : "";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,22 +72,28 @@ const SignupForm = () => {
   const handleBlur = (e) => {
     const { name, value } = e.target;
 
-    if (name === "fullName") 
+    if (name === "fullName")
       setErrors((prev) => ({ ...prev, fullName: validateFullName(value) }));
-    else if (name === "email") 
+    else if (name === "email")
       setErrors((prev) => ({ ...prev, email: validateEmail(value) }));
-    else if (name === "username") 
+    else if (name === "username")
       setErrors((prev) => ({ ...prev, username: validateUsername(value) }));
-    else if (name === "password") 
+    else if (name === "password")
       setErrors((prev) => ({ ...prev, password: validatePassword(value) }));
     else if (name === "dob")
       setErrors((prev) => ({ ...prev, dob: validateDOB(value) }));
     else if (name === "gender")
       setErrors((prev) => ({ ...prev, gender: validateGender(value) }));
     else if (name === "primaryConcern")
-      setErrors((prev) => ({ ...prev, primaryConcern: validatePrimaryConcern(value) }));
+      setErrors((prev) => ({
+        ...prev,
+        primaryConcern: validatePrimaryConcern(value),
+      }));
     else if (name === "otherConcern")
-      setErrors((prev) => ({ ...prev, otherConcern: validateOtherConcern(value) }));
+      setErrors((prev) => ({
+        ...prev,
+        otherConcern: validateOtherConcern(value),
+      }));
   };
 
   const handleSubmit = (e) => {
@@ -107,7 +124,9 @@ const SignupForm = () => {
       (key) => newErrors[key]
     );
     if (firstErrorField) {
-      document.getElementById(firstErrorField)?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById(firstErrorField)
+        ?.scrollIntoView({ behavior: "smooth" });
       return;
     }
 
@@ -117,24 +136,28 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full min-h-screen bg-gray-200 p-4">
-      <div className="w-full max-w-4xl shadow-2xl bg-white rounded-lg p-6 md:p-10">  
-        <h2 className="mb-6">          
+    <div className="flex justify-center items-center w-screen  min-h-screen bg-gray-200 p-4">
+      <div className="w-full max-w-4xl shadow-2xl bg-white rounded-lg p-6 md:p-10">
+        <div className="mb-6">
           <motion.div
-            className="w-full md:w-2/3"
-            whileHover={{ scale: 1.0 }}
-            whileTap={{ scale: 0.97 }}
+            className="w-24 "
+            variants={buttonVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <button
-              onClick={() => navigate(-1)}
-              className="bg-emerald-800  text-white text-sm font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onClick={() => navigate(-1)} // Updated to use navigate
+              className="bg-emerald-800 text-white text-sm font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               &larr; Back
             </button>
           </motion.div>
-        </h2>
+        </div>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
           {/* Left Side */}
           <div className="space-y-4">
             <div>
@@ -148,7 +171,9 @@ const SignupForm = () => {
                 className="w-full p-2 border rounded"
                 required
               />
-              {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
+              {errors.fullName && (
+                <p className="text-red-500 text-sm">{errors.fullName}</p>
+              )}
             </div>
 
             <div>
@@ -162,7 +187,9 @@ const SignupForm = () => {
                 className="w-full p-2 border rounded"
                 required
               />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email}</p>
+              )}
             </div>
 
             <div>
@@ -176,7 +203,9 @@ const SignupForm = () => {
                 className="w-full p-2 border rounded"
                 required
               />
-              {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
+              {errors.username && (
+                <p className="text-red-500 text-sm">{errors.username}</p>
+              )}
             </div>
 
             <div>
@@ -197,7 +226,9 @@ const SignupForm = () => {
               >
                 {showPassword ? "Hide" : "Show"} Password
               </button>
-              {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
+              {errors.password && (
+                <p className="text-red-500 text-sm">{errors.password}</p>
+              )}
             </div>
           </div>
           <div className="space-y-4">
@@ -212,7 +243,9 @@ const SignupForm = () => {
                 className="w-full p-2 border rounded"
                 required
               />
-              {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
+              {errors.dob && (
+                <p className="text-red-500 text-sm">{errors.dob}</p>
+              )}
             </div>
 
             <div>
@@ -232,7 +265,9 @@ const SignupForm = () => {
                 <option value="Prefer not to say">Prefer not to say</option>
                 <option value="Other">Other</option>
               </select>
-              {errors.gender && <p className="text-red-500 text-sm">{errors.gender}</p>}
+              {errors.gender && (
+                <p className="text-red-500 text-sm">{errors.gender}</p>
+              )}
             </div>
 
             <div>
@@ -251,7 +286,9 @@ const SignupForm = () => {
                 <option value="Relationship Issues">Relationship Issues</option>
                 <option value="Other">Other</option>
               </select>
-              {errors.primaryConcern && <p className="text-red-500 text-sm">{errors.primaryConcern}</p>}
+              {errors.primaryConcern && (
+                <p className="text-red-500 text-sm">{errors.primaryConcern}</p>
+              )}
             </div>
 
             {formData.primaryConcern === "Other" && (
@@ -264,7 +301,9 @@ const SignupForm = () => {
                   onChange={handleChange}
                   className="w-full p-2 border rounded"
                 />
-                {errors.otherConcern && <p className="text-red-500 text-sm">{errors.otherConcern}</p>}
+                {errors.otherConcern && (
+                  <p className="text-red-500 text-sm">{errors.otherConcern}</p>
+                )}
               </div>
             )}
           </div>

@@ -16,7 +16,7 @@ function PatientSignUpProvider({ children }) {
       // const { data } = await axios.post(`${URL}`, userData);
       const data = userData; // Mocking the response data
       setPatientData(data);
-      setIsLoggedIn(true);
+      console.log(data);
       toast.success("Signup Successful");
 
 
@@ -33,9 +33,10 @@ function PatientSignUpProvider({ children }) {
       const data = loginData; // Mocking the response data
       setIsLoggedIn(true);
       setPatientData(data);
+      console.log(data)
       toast.success("Login Successful");
 
-
+      // navigate("/Questions")
       navigate("/PatientDashboard");
     } catch (error) {
       toast.error("Login Failed");

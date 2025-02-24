@@ -15,10 +15,10 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <div className="  lg:px-2 ">
-      <div className="flex justify-between items-center">
+    <header className=" w-[1599px] px-5 mr-10  ">
+      <div className="flex justify-between  items-center mx-2">
         {/* Logo */}
-        <div className="flex items-center px-5 text-xl sm:text-2xl md:text-3xl font-[Snowburst_One]">
+        <div className="flex items-center px-5 text-xl sm:text-2xl md:text-3xl font-serif">
           <span className="text-2xl sm:text-3xl md:text-5xl">M</span>ind Care.
         </div>
 
@@ -99,6 +99,6 @@ export default function Header() {
           </motion.div>
         </>
       )}
-    </div>
+    </header>
   );
 }

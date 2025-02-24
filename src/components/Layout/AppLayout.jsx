@@ -10,28 +10,34 @@ export default function AppLayout({ children }) {
 
   useEffect(() => {
     console.log("This is the location of the Nav", location);
-    if (location.pathname === "/SignupForm" || location.pathname ==="/PatientDashboard" ) {
+    if (
+      location.pathname === "/SignupForm" ||
+      location.pathname === "/PatientDashboard"
+    ) {
       setRHeaderFooter(false);
     } else {
       setRHeaderFooter(true);
     }
   }, [location]);
 
-  return (   <>   {rHeaderFooter ? (
+  return (
+    <>
+      {" "}
+      {rHeaderFooter ? (
+        <div className="flex mx-3 w-full font-serif justify-center items-center  ">
+          <div className=" h-184 w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 ">
+            <Header />
+            <div className="bg-white">              <Outlet /></div>
 
-    <div className="flex mx-3  justify-center items-center  ">
-        <div className="min-w-screen h-184  bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 ">
-          <Header />
-          <div className="bg-white">
-          <Outlet /></div>
-          <Footer />
+            <Footer />
+          </div>
         </div>
-     
-    </div>
-     ) : (
-        children,
-        <Outlet />
-
-     )}</>
+      ) : (
+        <div className="font-serif">
+          {children}
+          <Outlet />
+        </div>
+      )}
+    </>
   );
 }

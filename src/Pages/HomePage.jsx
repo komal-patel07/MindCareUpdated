@@ -45,9 +45,10 @@ const data = [
 
 export default function HomePage() {
   return (
-<div className=" flex items-center   justify-center flex-col">
+<div className=" px-2  flex items-center justify-center flex-col">
+  <div className="w-[1600px]  ">
 {/* First Section */}
-<div >
+<div className="w-full">
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -64,7 +65,7 @@ export default function HomePage() {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="text-6xl w-200 py-8"
+        className="text-6xl w-200 py-8 font-serif"
       >
         There's No One Face to Mental Health Conditions
       </motion.h1>
@@ -108,7 +109,7 @@ export default function HomePage() {
       <img
         src={BoyImg}
         width={500}
-        className="max-w-lg py-7"
+        className="max-w-lg "
         alt="Mental Health Illustration"
       />
     </motion.div>
@@ -448,6 +449,7 @@ export default function HomePage() {
       </motion.div>
     ))}
   </div>
+</div>
 </div>
   );
 }

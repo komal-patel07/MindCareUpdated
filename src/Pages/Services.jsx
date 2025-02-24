@@ -1,5 +1,6 @@
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+
 const sections = [
   {
     id: "Introduction",
@@ -633,52 +634,51 @@ const sections = [
 ];
 
 export default function Services() {
-    const [searchParams] = useSearchParams();
-    const linkValue = searchParams.get("ID"); // Get the value of 'Link'
-  
-    
+  const [searchParams] = useSearchParams();
+  const linkValue = searchParams.get("ID"); // Get the value of 'Link'
+
   console.log(linkValue);
-    const [selectedSection, setSelectedSection] = useState(sections[0]);
-  
-    // Use effect to update the selected section based on linkValue
-    useEffect(() => {
-        if (linkValue && sections.length > 0) { 
-          const foundSection = sections.find(
-            (section) => section.id === linkValue
-          );
-      
-          console.log("Link Value:", linkValue); // Debugging
-          console.log("Found Section:", foundSection); // Debugging
-      
-          if (foundSection) {
-            setSelectedSection(foundSection);
-          }
-        }
-      }, [linkValue, sections]); // Depend on both linkValue & sections
-      
-    return (
-      <div className="flex h-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200">
-        {/* Sidebar */}
-        <nav className="w-1/4 bg-gray-500 text-white p-4">
-          <h2 className="text-xl font-bold mb-4">Mental Health Issues & Therapies</h2>
-          <ul>
-            {sections.map((section) => (
-              <li
-                key={section.id}
-                className={`p-2 cursor-pointer rounded ${
-                  selectedSection.id === section.id ? "bg-white text-black" : "hover:bg-white hover:text-black"
-                }`}
-                onClick={() => setSelectedSection(section)}
-              >
-                {section.title}
-              </li>
-            ))}
-          </ul>
-        </nav>
-  
-        {/* Main Content */}
-        <main className="w-3/4 p-6 h-screen overflow-y-auto border border-gray-300">
-          <h1 className="text-5xl font-semibold mb-4">{selectedSection.title}</h1>
-          <div className="text-xl">{selectedSection.content}</div>
-        </main>
-      </div>)}
+  const [selectedSection, setSelectedSection] = useState(sections[0]);
+
+  // Use effect to update the selected section based on linkValue
+  useEffect(() => {
+    if (linkValue && sections.length > 0) {
+      const foundSection = sections.find((section) => section.id === linkValue);
+
+      console.log("Link Value:", linkValue); // Debugging
+      console.log("Found Section:", foundSection); // Debugging
+
+      if (foundSection) {
+        setSelectedSection(foundSection);
+      }
+    }
+  }, [linkValue, sections]); // Depend on both linkValue & sections
+
+  return (
+    <div className="flex flex-col md:flex-row h-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200">
+      {/* Sidebar */}
+      <nav className="w-full md:w-1/4 bg-gray-500 text-white p-4">
+        <h2 className="text-xl font-bold mb-4">Mental Health Issues & Therapies</h2>
+        <ul>
+          {sections.map((section) => (
+            <li
+              key={section.id}
+              className={`p-2 cursor-pointer rounded ${
+                selectedSection.id === section.id ? "bg-white text-black" : "hover:bg-white hover:text-black"
+              }`}
+              onClick={() => setSelectedSection(section)}
+            >
+              {section.title}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Main Content */}
+      <main className="w-full md:w-3/4 p-6 h-screen overflow-y-auto border border-gray-300">
+        <h1 className="text-5xl font-semibold mb-4">{selectedSection.title}</h1>
+        <div className="text-xl">{selectedSection.content}</div>
+      </main>
+    </div>
+  );
+}
