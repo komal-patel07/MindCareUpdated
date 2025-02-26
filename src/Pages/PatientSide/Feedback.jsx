@@ -60,7 +60,7 @@ const Feedback = () => {
   
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 p-4">
+    <div className="flex justify-center w-full  h-full overflow-hidden items-center min-h-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 p-4">
       <div className="w-full max-w-4xl shadow-2xl bg-white rounded-lg flex flex-col md:flex-row">
         <div className="w-full md:w-1/2 p-7">
         <div className=" w-24 ">

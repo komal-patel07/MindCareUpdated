@@ -45,7 +45,7 @@ const data = [
 
 export default function HomePage() {
   return (
-<div className=" px-2  flex items-center justify-center flex-col">
+<div className=" px-2  w-full overflow-x-hidden flex items-center justify-center flex-col">
   <div className="w-[1600px]  ">
 {/* First Section */}
 <div className="w-full">

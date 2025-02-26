@@ -1,41 +1,15 @@
-import React, { useContext } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Sidebar from "@/components/ui/sidebar";
-import { PatientSignUpContext } from "@/Context/PatientSignUpContext";
 import Component from "@/components/Custom/LineChart";
 import CallCart from "@/components/Custom/DoctorCart";
 import DataTable from "@/components/Custom/DataTable";
 
-export default function PatientDashboard() {
-  const { patientData } = useContext(PatientSignUpContext);
-  console.log(patientData.username);
-  if (!patientData) return <h1>Not Logged in!!</h1>;
-  const db = patientData.dob;
-  function getAge(db) {
-    let birthDate = new Date(db);
-    let today = new Date();
-
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let monthDiff = today.getMonth() - birthDate.getMonth();
-    let dayDiff = today.getDate() - birthDate.getDate();
-
-    // Adjust if birthday hasn't occurred yet this year
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      age--;
-    }
-
-    return age;
-  }
-  const Age = getAge(db);
-  console.log(Age);
-
-  // Example usage
-  console.log(getAge("2000-02-26")); // Output: Correct age based on current date
+export default function AdminDashboard() {
 
   return (
     <div className="flex justify-center  " >
       <div className="flex justify-center w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200   ">
-        <Sidebar firstLink={"Home"} SecondLink={"FeedBack"} thirdLink={"Appointment"} />
+        <Sidebar firstLink={"Home"} SecondLink={"Add Therapist"} thirdLink={"Add Admin"}  />
         <main className="flex-1 p-6 grid grid-cols-2 gap-6  w-5">
           {/* Profile Card */}
           <Card className="col-span-1 p-4">
@@ -48,7 +22,7 @@ export default function PatientDashboard() {
                 />
                 <div className="">
                   <h2 className="text-lg font-bold">
-                    Name {patientData.username}
+                    Name 
                   </h2>
                   <p className="text-sm text-gray-500">7000-589-483</p>
                 </div>

@@ -8,16 +8,23 @@ import Services from "./Pages/Services.jsx";
 import SignupForm from "./Pages/PatientSide/SignupForm.jsx";
 import Feedback from "./Pages/PatientSide/Feedback.jsx";
 import Error from "./Pages/Error.jsx";
-import First from "./Pages/Questions/First.jsx";
 import { PatientSignUpProvider } from "./Context/PatientSignUpContext.jsx";
 import PatientDashboard from "./Pages/PatientSide/PatientDashboard.jsx";
-import Second from "./Pages/Questions/Second.jsx";
-import Question from "./Pages/Questions/Question.jsx";
+import AdminDashboard from "./Pages/AdmineSide/Dashboard.jsx";
+import AdminLogin from "./Pages/AdmineSide/AdminLogin.jsx";
+import { AdminLoginContext } from "./Context/AdminLoginContext.jsx";
+
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AppLayout />,
+      element: (
+        <PatientSignUpProvider>
+          <AdminLoginContext>
+          <AppLayout />
+          </AdminLoginContext>
+        </PatientSignUpProvider>
+      ),
       children: [
         {
           path: "/",
@@ -34,34 +41,27 @@ function App() {
         {
           path: "/Login",
           element: (
-            <PatientSignUpProvider>
               <Login />
-            </PatientSignUpProvider>
           ),
         },
         { path: "/Services", element: <Services /> },
-        ,{
-          
-            path:"/PatientDashboard",
-            element:(
-              <PatientDashboard/>
-            )
-          
+        ,
+        {
+          path: "/PatientDashboard",
+          element: (
+              <PatientDashboard />
+          ),
         },
+        
         ,{
-          path:"/Question",
-          element:
-            <Question/>,
-            children:[{
-              path:"First",
-              element:<First/>
-            },
-            {
-              path:"Second",
-              element:<Second/>
-            },
-          ]
-          
+          path:"/AdminDashboard",
+          element:(
+            <AdminDashboard/>
+          )
+        },
+        {
+          path:"/AdminLogin",
+          element:<AdminLogin/>
         },
         {
           path: "/SignupForm",

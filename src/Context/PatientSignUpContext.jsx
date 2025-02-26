@@ -15,12 +15,15 @@ function PatientSignUpProvider({ children }) {
     try {
       // const { data } = await axios.post(`${URL}`, userData);
       const data = userData; // Mocking the response data
+      // userData.username = "Komal"
+      // userData.email = "komal@gmail.com";
+      // userData.gender="female"
       setPatientData(data);
       console.log(data);
       toast.success("Signup Successful");
 
 
-      // navigate("/Login");
+      navigate("/Login");
     } catch (error) {
       toast.error("Signup Failed");
     }
@@ -35,7 +38,7 @@ function PatientSignUpProvider({ children }) {
       setPatientData(data);
       console.log(data)
       toast.success("Login Successful");
-
+      
       // navigate("/Questions")
       navigate("/PatientDashboard");
     } catch (error) {

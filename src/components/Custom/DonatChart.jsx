@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-  { browser: "Anxiety", visitors: 275, fill: "#A7C7E7" },
+  { browser: "Anxiety", visitors: 275, fill: "" },
   { browser: "Depression", visitors: 200, fill: "#B5EAD7" },
   { browser: "Stress", visitors: 287, fill: "#C3B1E1" },
   { browser: "Anger", visitors: 173, fill: "#F5E3C1" },

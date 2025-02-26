@@ -44,13 +44,13 @@ export default function Login() {
 
 
   
-  const Signup = (formState) => {
-    // Implement the Signup logic here
-    console.log("Signup function called with formState:", formState);
-  };
+  // const Signup = (formState) => {
+  //   // Implement the Signup logic here
+  //   console.log("Signup function called with formState:", formState);
+  // };
 
   return (
-    <div className=" w-screen  flex-col flex justify-center items-center  min-h-screen bg-gradient-to-bl  from-rose-100 via-gray-100 to-gray-200   ">
+    <div className="  w-full  h-screen overflow-x-hidden  flex-col flex justify-center items-center  min-h-screen bg-gradient-to-bl  from-rose-100 via-gray-100 to-gray-200   ">
       <div className="flex flex-col md:flex-row w-full max-w-5xl rounded-lg overflow-hidden shadow-xl p-6 bg-white">
         {/* Left Section */}
         <div className=" mb-6 ">
@@ -138,9 +138,15 @@ export default function Login() {
 
           {/* Signup Link */}
           <p className="text-center mt-6 text-sm text-gray-600">
+          
+          </p>
+          <p className="text-center mt-6 text-sm text-gray-600">
             Don't have an account?{" "}
             <Link to="/SignupForm" className="text-emerald-900 hover:underline">
               Sign up
+            </Link>
+            <Link to="/AdminLogin" className="text-emerald-900 hover:underline">
+              /Login as Admin
             </Link>
           </p>
         </div>
