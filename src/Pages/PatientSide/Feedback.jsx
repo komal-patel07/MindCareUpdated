@@ -81,9 +81,16 @@ const Feedback = () => {
           <img
             src="src/assets/yoga-meditation.png"
             alt="Feedback"
-            className="w-full h-full object-cover rounded-l-lg"
+            className=" w-[400px] rounded-l-lg"
           />
+ <p className="text-gray-600 text-center text-sm sm:text-base px-5">
+ "Mental health needs a great deal of attention. It’s the final taboo and it needs to be faced and dealt with." 
+
+          </p>
+
+      
         </div>
+      
         <div className="w-full md:w-1/2 p-6 md:p-10">
           <h2 className="text-2xl font-semibold mb-6 text-center">Patient Feedback Form</h2>
           <form onSubmit={handleSubmit} className="space-y-4">

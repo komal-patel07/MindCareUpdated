@@ -13,7 +13,8 @@ export default function AppLayout({ children }) {
     if (
       location.pathname === "/SignupForm" ||
       location.pathname === "/PatientDashboard" ||
-      location.pathname === "/Admindashboard"
+      location.pathname === "/Admindashboard"||
+      location.pathname === "/TherapistDashboard"
     ) {
       setRHeaderFooter(false);
     } else {
@@ -25,8 +26,8 @@ export default function AppLayout({ children }) {
     <>
       {" "}
       {rHeaderFooter ? (
-        <div className="flex font-serif justify-center items-center  ">
-          <div className=" h-184 w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 ">
+        <div className="flex font-amatic   justify-center items-center  ">
+          <div className=" h-184 w-[1599px]  bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200 ">
             <Header />
             <div className="bg-white">
               {" "}
@@ -37,7 +38,7 @@ export default function AppLayout({ children }) {
           </div>
         </div>
       ) : (
-        <div className="font-serif">
+        <div className="font-amatic ">
           {children}
           <Outlet />
         </div>

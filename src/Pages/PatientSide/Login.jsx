@@ -148,6 +148,9 @@ export default function Login() {
             <Link to="/AdminLogin" className="text-emerald-900 hover:underline">
               /Login as Admin
             </Link>
+            <Link to="/TherapistLogin" className="text-emerald-900 hover:underline">
+              /Login as Therapist
+            </Link>
           </p>
         </div>
         <Toaster richColors />

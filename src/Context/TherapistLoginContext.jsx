@@ -2,14 +2,14 @@ import { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 
-const AdminLoginContext = createContext();
+const TherapistLoginContext = createContext();
 
-const AdminLoginProvider = ({ children }) => {
+const TherapistLoginContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [adminData, setAdminData] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleAminLogin = async (loginData) => {
+  const handleLogin = async (loginData) => {
     try {
       // const { data } = await axios.post(`${URL}`, loginData);
       const data = loginData; // Mocking the response data
@@ -25,12 +25,12 @@ const AdminLoginProvider = ({ children }) => {
     }
   };
 
-  const contextValue = { handleAminLogin, isLoggedIn, setIsLoggedIn };
+  const contextValue = { handleLogin, isLoggedIn, setIsLoggedIn };
   return (
-    <AdminLoginContext.Provider value={contextValue}>
+    <TherapistLoginContext.Provider value={contextValue}>
       {children}
-    </AdminLoginContext.Provider>
+    </TherapistLoginContext.Provider>
   );
 };
 
-export { AdminLoginContext,AdminLoginProvider };
+export { TherapistLoginContext,TherapistLoginContextProvider };

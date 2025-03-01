@@ -36,7 +36,7 @@ export default function PatientDashboard() {
     <div className="flex justify-center  " >
       <div className="flex justify-center w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200   ">
         <Sidebar firstLink={"Home"} SecondLink={"FeedBack"} thirdLink={"Appointment"} />
-        <main className="flex-1 p-6 grid grid-cols-2 gap-6  w-5">
+        <main className="flex-1 p-6 grid grid-cols-2   gap-6  w-5">
           {/* Profile Card */}
           <Card className="col-span-1 p-4">
             <CardContent className=" flex flex-col justify-center p-5 ">
@@ -75,7 +75,7 @@ export default function PatientDashboard() {
           <Card className="col-span-2 p-4">
             <CardContent>
               <h2 className="text-lg font-bold">Your Activity</h2>
-              <div className=" bg-gray-200 mt-4  rounded-t-xl">
+              <div className=" bg-gray-200 mt-1  rounded-t-xl">
                 <DataTable />
               </div>
             </CardContent>

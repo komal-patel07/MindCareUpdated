@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Sidebar from "@/components/ui/sidebar";
-import Component from "@/components/Custom/LineChart";
+import Component from "@/components/Custom/DonatChart";
 import CallCart from "@/components/Custom/DoctorCart";
-import DataTable from "@/components/Custom/DataTable";
+import DataTable from "@/components/Custom/AppointmentDataAdmin";
 
 export default function AdminDashboard() {
 
@@ -10,7 +10,7 @@ export default function AdminDashboard() {
     <div className="flex justify-center  " >
       <div className="flex justify-center w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200   ">
         <Sidebar firstLink={"Home"} SecondLink={"Add Therapist"} thirdLink={"Add Admin"}  />
-        <main className="flex-1 p-6 grid grid-cols-2 gap-6  w-5">
+        <main className="flex-1 p-6 grid grid-cols-3 gap-4  h-screen overflow-y-auto scrollbar-hide w-5">
           {/* Profile Card */}
           <Card className="col-span-1 p-4">
             <CardContent className=" flex flex-col justify-center p-5 ">
@@ -43,17 +43,17 @@ export default function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
-          <Component />
-
-          {/* Activity Chart */}
-          <Card className="col-span-2 p-4">
+          <Component/>
+          <div>Komal</div>
+          {/* <Component/> */}
+          <Card className="col-span-3 p-4">
             <CardContent>
-              <h2 className="text-lg font-bold">Your Activity</h2>
               <div className=" bg-gray-200 mt-4  rounded-t-xl">
                 <DataTable />
               </div>
             </CardContent>
           </Card>
+
         </main>
         <div className="flex flex-col gap-2">
           <CallCart />

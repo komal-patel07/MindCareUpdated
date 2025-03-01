@@ -1,44 +1,45 @@
 import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
-import { Toaster } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
+import { Link, useNavigate } from "react-router-dom";
 import { buttonVariants } from "@/components/Animation/HomePageAnimation";
-import { AdminLoginContext } from "@/Context/AdminLoginContext";
-import nurseImage from "@/assets/Nurse.png"; 
+import { TherapistLoginContext } from "@/Context/TherapistLoginContext";
+import nurseImage from "@/assets/Nurse.png"; // ✅ Corrected image import
 
-export default function AdminLogin() {
-  const handleAdminLogin = useContext(AdminLoginContext);
-
-  if (!handleAdminLogin) {
-    console.error("AdminLoginContext is not available! Make sure it's wrapped in AdminLoginProvider.");
-    return <p className="text-red-500">Error: Context not provided.</p>;
-  }
-
+export default function TherapistLogin() {
+  const handleLogin  = useContext(TherapistLoginContext);
   const navigate = useNavigate();
-  const [formState, setFormState] = useState({ username: "", password: "" });
+
+  const [formState, setFormState] = useState({
+    username: "",
+    password: "",
+  });
   const [errors, setErrors] = useState("");
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    const loginRes = handleAdminLogin({
-      username: formState.username,
-      password: formState.password,
-    });
 
-    if (loginRes) {
+      const loginRes = handleLogin({
+        username: formState.username,
+        password: formState.password,
+      });
+      console.log(loginRes);
       setErrors(loginRes);
-    } else {
-      navigate("/AdminDashboard"); // Redirect on successful login
-    }
+      toast.success("Login successful!");
+    
+      setFormState({
+        username:"",password:""
+      })
   };
 
   return (
-    <div className="w-full h-screen flex-col flex justify-center items-center min-h-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200">
+    <div className="w-full h-screen overflow-x-hidden flex-col flex justify-center items-center min-h-screen bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200">
       <div className="flex flex-col md:flex-row w-full max-w-5xl rounded-lg overflow-hidden shadow-xl p-6 bg-white">
+        {/* Left Section - Back Button */}
         <div className="mb-6">
           <motion.div
             className="w-55"
@@ -48,24 +49,33 @@ export default function AdminLogin() {
           >
             <button
               onClick={() => navigate(-1)}
-              className="bg-emerald-800 text-white text-sm font-normal py-2 px-4 rounded"
+              className="bg-emerald-800 text-white text-sm font-normal py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              &larr; Back
+              &larr;Back
             </button>
           </motion.div>
         </div>
 
+        {/* Left Section - Image & Quote */}
         <div className="w-full md:w-1/2 p-6 md:p-10 bg-gray-50 flex flex-col items-center">
-          <img src={nurseImage} alt="Nurse" className="w-48 sm:w-64 md:w-72 lg:w-80 mb-5" />
+          <img
+            src={nurseImage}
+            alt="Nurse"
+            className="w-48 sm:w-64 md:w-72 lg:w-80 mb-5"
+          />
           <p className="text-gray-600 text-center text-sm sm:text-base px-5">
-            "Don't let your mind bully your body into believing it must carry the burden of its worries."
+            "Don't let your mind bully your body into believing it must carry
+            the burden of its worries."
           </p>
         </div>
 
+        {/* Right Section - Login Form */}
         <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-600 mb-2 text-sm md:text-base">Username or Email</label>
+              <label className="block text-gray-600 mb-2 text-sm md:text-base">
+                Username or Email
+              </label>
               <input
                 type="text"
                 name="username"
@@ -78,7 +88,9 @@ export default function AdminLogin() {
             </div>
 
             <div>
-              <label className="block text-gray-600 mb-2 text-sm md:text-base">Password</label>
+              <label className="block text-gray-600 mb-2 text-sm md:text-base">
+                Password
+              </label>
               <input
                 type="password"
                 name="password"
@@ -90,8 +102,16 @@ export default function AdminLogin() {
               />
             </div>
 
-            <motion.div className="mt-6" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-              <button type="submit" className="w-full text-white bg-emerald-800 px-4 py-2 rounded-lg font-semibold transition">
+            {/* Login Button */}
+            <motion.div
+              className="mt-6"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <button
+                type="submit"
+                className="w-full text-white bg-emerald-800 px-4 py-2 rounded-lg font-semibold transition"
+              >
                 Login
               </button>
             </motion.div>

@@ -12,7 +12,10 @@ import { PatientSignUpProvider } from "./Context/PatientSignUpContext.jsx";
 import PatientDashboard from "./Pages/PatientSide/PatientDashboard.jsx";
 import AdminDashboard from "./Pages/AdmineSide/Dashboard.jsx";
 import AdminLogin from "./Pages/AdmineSide/AdminLogin.jsx";
-import { AdminLoginContext } from "./Context/AdminLoginContext.jsx";
+import { AdminLoginProvider } from "./Context/AdminLoginContext.jsx";
+import TherapistDashboard from "./Pages/Therapist/TherapistDashBoard.jsx";
+import TherapistLogin from "./Pages/Therapist/TherapistLogin.jsx";
+import { TherapistLoginContextProvider } from "./Context/TherapistLoginContext.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,9 +23,12 @@ function App() {
       path: "/",
       element: (
         <PatientSignUpProvider>
-          <AdminLoginContext>
-          <AppLayout />
-          </AdminLoginContext>
+          <TherapistLoginContextProvider>
+            {" "}
+            <AdminLoginProvider>
+              <AppLayout />
+            </AdminLoginProvider>
+          </TherapistLoginContextProvider>
         </PatientSignUpProvider>
       ),
       children: [
@@ -40,36 +46,26 @@ function App() {
         },
         {
           path: "/Login",
-          element: (
-              <Login />
-          ),
+          element: <Login />,
         },
         { path: "/Services", element: <Services /> },
-        ,
+        { path: "/TherapistDashboard", element: <TherapistDashboard /> },
         {
           path: "/PatientDashboard",
-          element: (
-              <PatientDashboard />
-          ),
+          element: <PatientDashboard />,
         },
-        
-        ,{
-          path:"/AdminDashboard",
-          element:(
-            <AdminDashboard/>
-          )
+        { path: "/TherapistLogin", element: <TherapistLogin /> },
+        {
+          path: "/AdminDashboard",
+          element: <AdminDashboard />,
         },
         {
-          path:"/AdminLogin",
-          element:<AdminLogin/>
+          path: "/AdminLogin",
+          element: <AdminLogin />,
         },
         {
           path: "/SignupForm",
-          element: (
-            <PatientSignUpProvider>
-              <SignupForm />
-            </PatientSignUpProvider>
-          ),
+          element: <SignupForm />,
         },
         {
           path: "*",

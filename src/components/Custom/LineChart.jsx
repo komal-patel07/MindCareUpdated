@@ -50,7 +50,7 @@ const chartConfig = {
 };
 export  default function Component() {
   return (
-    <Card>
+    <Card >
       <CardHeader>
       <CardTitle>Mental Health Condition </CardTitle>
       <CardDescription>January - June 2024</CardDescription>
@@ -91,7 +91,7 @@ export  default function Component() {
                 fill: "var(--color-Level)",
               }}
               activeDot={{
-                r: 6,
+                r:6,
               }}
             >
               <LabelList
