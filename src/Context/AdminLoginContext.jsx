@@ -6,31 +6,35 @@ const AdminLoginContext = createContext();
 
 const AdminLoginProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [adminData, setAdminData] = useState([]);
+  const [adminData, setAdminData] = useState(null); // Store admin user data
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleAminLogin = async (loginData) => {
+  const handleAdminLogin = async (loginData) => {
     try {
+      // Replace with backend API call
       // const { data } = await axios.post(`${URL}`, loginData);
-      const data = loginData; // Mocking the response data
-      setIsLoggedIn(true);
-      setAdminData(data);
-      console.log(data);
-      toast.success("Login Successful");
+      const mockResponse = { success: true, user: loginData }; // Mock API response
 
-      // navigate("/Questions")
-      navigate("/AdminDashboard");
+      if (mockResponse.success) {
+        setAdminData(mockResponse.user);
+        setIsLoggedIn(true);
+        toast.success("Login Successful");
+        navigate("/AdminDashboard"); // ✅ Only navigate if login is successful
+        return mockResponse;
+      } else {
+        throw new Error("Invalid Credentials");
+      }
     } catch (error) {
-      toast.error("Login Failed");
+      toast.error(error.message || "Login Failed");
+      return { error: error.message };
     }
   };
 
-  const contextValue = { handleAminLogin, isLoggedIn, setIsLoggedIn };
   return (
-    <AdminLoginContext.Provider value={contextValue}>
+    <AdminLoginContext.Provider value={{ handleAdminLogin, adminData, isLoggedIn, setIsLoggedIn }}>
       {children}
     </AdminLoginContext.Provider>
   );
 };
 
-export { AdminLoginContext,AdminLoginProvider };
+export { AdminLoginContext, AdminLoginProvider };

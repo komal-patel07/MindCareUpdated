@@ -15,7 +15,7 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="w-full px-4 sm:px-6 lg:px-8 py-4">
+    <header className="w-full px-4 sm:px-6 lg:px-8 py-4 ">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center text-xl sm:text-2xl md:text-3xl font-serif">

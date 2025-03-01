@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Toaster } from "sonner";
+import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { buttonVariants } from "@/components/Animation/HomePageAnimation";
 import { AdminLoginContext } from "@/Context/AdminLoginContext";
 import nurseImage from "@/assets/Nurse.png"; 
 
 export default function AdminLogin() {
-  const handleAdminLogin = useContext(AdminLoginContext);
+  const { handleAdminLogin, isLoggedIn } = useContext(AdminLoginContext);
 
   if (!handleAdminLogin) {
     console.error("AdminLoginContext is not available! Make sure it's wrapped in AdminLoginProvider.");
@@ -18,21 +18,36 @@ export default function AdminLogin() {
   const [formState, setFormState] = useState({ username: "", password: "" });
   const [errors, setErrors] = useState("");
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/AdminDashboard");
+    }
+  }, [isLoggedIn, navigate]);
+
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const loginRes = handleAdminLogin({
-      username: formState.username,
-      password: formState.password,
-    });
 
-    if (loginRes) {
-      setErrors(loginRes);
-    } else {
-      navigate("/AdminDashboard"); // Redirect on successful login
+    try {
+      const loginRes = await handleAdminLogin({
+        username: formState.username,
+        password: formState.password,
+      });
+
+      if (loginRes?.error) {
+        setErrors(loginRes.error);
+        toast.error("Login failed!");
+      } else {
+        setErrors("");
+        toast.success("Login successful!");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setErrors("An unexpected error occurred.");
+      toast.error("An unexpected error occurred.");
     }
   };
 
@@ -50,7 +65,7 @@ export default function AdminLogin() {
               onClick={() => navigate(-1)}
               className="bg-emerald-800 text-white text-sm font-normal py-2 px-4 rounded"
             >
-              &larr; Back
+              &larr;Back
             </button>
           </motion.div>
         </div>

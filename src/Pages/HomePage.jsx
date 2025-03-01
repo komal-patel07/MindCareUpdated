@@ -92,7 +92,7 @@ export default function HomePage() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Button text="Find a Provider" />
+         <Link to={"/Appointment"}>   <Button text="Get Started" /></Link>
           </motion.div>
         </div>
         <div className="ml-10 flex items-center">
@@ -193,7 +193,7 @@ export default function HomePage() {
 
   {/* Third Section: Services */}
   <motion.div className="flex justify-center py-20" variants={itemVariants}>
-    <h1 className="text-2xl md:text-5xl w-100 text-center">
+    <h1 className="text-2xl md:text-5xl w-[1200px] text-center">
       Our extensive network of licensed clinicians offers a wide variety of
       services.
     </h1>
@@ -205,14 +205,16 @@ export default function HomePage() {
     animate="visible"
   >
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-      {[
+      {[        
+
         {
-          logo: <User className="size-11" />,
+          logo:<User className="size-11" />,
           title: "Individual Therapy",
           link: "IndividualTherapy",
           description:
             "Individual therapy is a personalized form of psychotherapy where a trained professional helps individuals address and work through their mental health issues. ",
-        },
+          },
+
         {
           logo: <Users className="size-11" />,
           title: "Couples Therapy",

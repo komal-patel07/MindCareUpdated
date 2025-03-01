@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import About from "./Pages/About.jsx";
-import AppLayout from "./components/Layout/AppLayout.jsx";
 import Landing from "./Pages/HomePage.jsx";
 import Login from "./Pages/PatientSide/Login.jsx";
 import Services from "./Pages/Services.jsx";
@@ -15,21 +18,17 @@ import AdminLogin from "./Pages/AdmineSide/AdminLogin.jsx";
 import { AdminLoginProvider } from "./Context/AdminLoginContext.jsx";
 import TherapistDashboard from "./Pages/Therapist/TherapistDashBoard.jsx";
 import TherapistLogin from "./Pages/Therapist/TherapistLogin.jsx";
-import { TherapistLoginContextProvider } from "./Context/TherapistLoginContext.jsx";
+import { TherapistLoginContext, TherapistLoginContextProvider } from "./Context/TherapistLoginContext.jsx";
+import Appointment from "./Pages/PatientSide/Appointment.jsx";
+import AppLayout from "./components/Layout/AppLayout.jsx";
+import QuestioningPage from "./Pages/Questions/Couple/Question.jsx";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
-        <PatientSignUpProvider>
-          <TherapistLoginContextProvider>
-            {" "}
-            <AdminLoginProvider>
-              <AppLayout />
-            </AdminLoginProvider>
-          </TherapistLoginContextProvider>
-        </PatientSignUpProvider>
+        <AppLayout />
       ),
       children: [
         {
@@ -44,34 +43,74 @@ function App() {
           path: "/Feedback",
           element: <Feedback />,
         },
+        { path: "/Services",
+           element: <Services />
+        },
         {
           path: "/Login",
-          element: <Login />,
-        },
-        { path: "/Services", element: <Services /> },
-        { path: "/TherapistDashboard", element: <TherapistDashboard /> },
-        {
-          path: "/PatientDashboard",
-          element: <PatientDashboard />,
-        },
-        { path: "/TherapistLogin", element: <TherapistLogin /> },
-        {
-          path: "/AdminDashboard",
-          element: <AdminDashboard />,
-        },
-        {
-          path: "/AdminLogin",
-          element: <AdminLogin />,
+          element: (
+            <PatientSignUpProvider>
+              <Login />
+            </PatientSignUpProvider>
+          ),
         },
         {
           path: "/SignupForm",
-          element: <SignupForm />,
+          element: (
+            <PatientSignUpProvider>
+              <SignupForm />
+            </PatientSignUpProvider>
+          ),
         },
         {
-          path: "*",
-          element: <Error />,
+          path: "/PatientDashboard",
+          element: (
+            <PatientSignUpProvider>
+              <PatientDashboard />
+            </PatientSignUpProvider>
+          ),
+        },
+        {
+          path: "/AdminLogin",
+          element: (
+            <AdminLoginProvider>
+              <AdminLogin />{" "}
+            </AdminLoginProvider>
+          ),
+        },
+        {
+          path: "/AdminDashboard",
+          element: (
+              <AdminLoginProvider>
+                <AdminDashboard />
+              </AdminLoginProvider>
+          ),
+
+        },
+        {path:"/TherapistLogin",
+          element:(
+            <TherapistLoginContextProvider>
+            <TherapistLogin/>
+            </TherapistLoginContextProvider>
+          )
+        },{
+          path:"/TherapistDashboard",
+          element:(
+            <TherapistLoginContext>
+            <TherapistDashboard/>
+            </TherapistLoginContext>
+          )
         },
       ],
+    },
+    {
+      path:"Questions",
+      element:<QuestioningPage/>
+    }
+    ,
+    {
+      path: "*",
+      element: <Error />,
     },
   ]);
   return <RouterProvider router={router} />;

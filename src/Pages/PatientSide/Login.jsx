@@ -132,7 +132,7 @@ export default function Login() {
           </div>
 
           {/* Google Login */}
-          <GoogleOAuthProvider clientId="1095836248937-ea1hjrtusaquuigbst6dm9s2s91dpk8s.apps.googleusercontent.com">
+          <GoogleOAuthProvider clientId="531249680682-bnvubaq50vid6sq066bgt4t1848c73js.apps.googleusercontent.com">
             <GoogleLogin onSuccess={handleSucess} onError={handleError} />
           </GoogleOAuthProvider>
 

@@ -6,31 +6,33 @@ const TherapistLoginContext = createContext();
 
 const TherapistLoginContextProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [adminData, setAdminData] = useState([]);
+  const [therapistData, setTherapistData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = async (loginData) => {
+  const handleLogin = async ({ username, password }) => {
     try {
-      // const { data } = await axios.post(`${URL}`, loginData);
-      const data = loginData; // Mocking the response data
-      setIsLoggedIn(true);
-      setAdminData(data);
-      console.log(data);
-      toast.success("Login Successful");
+      // Mock login logic
+      if (username === "test" && password === "123") {
+        setTherapistData({ username });
+        setIsLoggedIn(true);
+        toast.success("Login Successful");
 
-      // navigate("/Questions")
-      navigate("/AdminDashboard");
+        navigate("/TherapistDashboard"); // ✅ Only navigate on success
+        return { success: true };
+      } else {
+        throw new Error("Invalid Credentials");
+      }
     } catch (error) {
-      toast.error("Login Failed");
+      toast.error(error.message || "Login Failed");
+      return { error: error.message };
     }
   };
 
-  const contextValue = { handleLogin, isLoggedIn, setIsLoggedIn };
   return (
-    <TherapistLoginContext.Provider value={contextValue}>
+    <TherapistLoginContext.Provider value={{ handleLogin, therapistData, isLoggedIn, setIsLoggedIn }}>
       {children}
     </TherapistLoginContext.Provider>
   );
 };
 
-export { TherapistLoginContext,TherapistLoginContextProvider };
+export { TherapistLoginContext, TherapistLoginContextProvider };

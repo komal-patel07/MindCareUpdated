@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaWhatsapp, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const Footer = () => {
@@ -31,13 +32,10 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:flex-row space-x-0 md:space-x-6 text-center md:text-left"> {/* Footer links */}
-          <a href="#" className="hover:text-gray-300 hover:underline mb-2 md:mb-0 ">About Us</a>
-          <a href="#" className="hover:text-gray-300 hover:underline mb-2 md:mb-0">Careers</a>
+          <Link to={"/About"} className="hover:text-gray-300 hover:underline mb-2 md:mb-0 ">About Us</Link>
+          <Link to={"/Services"} className="hover:text-gray-300 hover:underline mb-2 md:mb-0 ">Services</Link>
           <a href="#" className="hover:text-gray-300 hover:underline mb-2 md:mb-0">Privacy Policy</a>
-          <a href="#" className="hover:text-gray-300 hover:underline">Media Center</a>
           <a href="#" className="hover:text-gray-300 hover:underline">Foundation</a>
-          <a href="#" className="hover:text-gray-300 hover:underline">Investor Relations</a>
-          <a href="#" className="hover:text-gray-300 hover:underline">Partnership Inquiries</a> {/* Corrected spelling */}
         </div>
 
       </div>
