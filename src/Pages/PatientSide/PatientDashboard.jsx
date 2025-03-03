@@ -35,7 +35,7 @@ export default function PatientDashboard() {
   return (
     <div className="flex justify-center  " >
       <div className="flex justify-center w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200   ">
-        <Sidebar firstLink={"Home"} SecondLink={"FeedBack"} thirdLink={"Appointment"} />
+        <Sidebar firstLink={"Home"} SecondLink={"FeedBack"} thirdLink={"Appointment"} forthLink={"Communication"} fifthLink={"Services"} />
         <main className="flex-1 p-6 grid grid-cols-2   gap-6  w-5">
           {/* Profile Card */}
           <Card className="col-span-1 p-4">

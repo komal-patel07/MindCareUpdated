@@ -107,7 +107,10 @@ function App() {
       path:"Questions",
       element:<QuestioningPage/>
     }
-    ,
+    ,{
+      path:"/Appointment",
+      element:<Appointment/>
+    },
     {
       path: "*",
       element: <Error />,

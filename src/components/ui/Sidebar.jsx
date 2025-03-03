@@ -34,13 +34,13 @@ const Sidebar = ({firstLink,SecondLink,thirdLink,forthLink,fifthLink}) => {
             >
               <span className="flex items-center space-x-2">
                 <Home size={16} />
-                <span>Playground</span>
+                <span>Dashboard</span>
               </span>
               {openSections.playground ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
             </button>
             {openSections.playground && (
               <div className="ml-6 space-y-2">
-                <Link to={"/"+firstLink} className="block px-4 py-2 rounded px-b  hover:bg-white hover:text-black">{firstLink}</Link>
+                <Link to={"/"} className="block px-4 py-2 rounded px-b  hover:bg-white hover:text-black">{firstLink}</Link>
                 <Link to={"/"+SecondLink} className="block px-4 py-2 rounded px-b  hover:bg-white hover:text-black">{SecondLink}</Link>
                 <Link to={"/"+thirdLink} className="block px-4 py-2 rounded px-b  hover:bg-white hover:text-black">{thirdLink}</Link>
                 
@@ -48,15 +48,14 @@ const Sidebar = ({firstLink,SecondLink,thirdLink,forthLink,fifthLink}) => {
             )}
           </div>
 
-          <a href="#" className="flex items-center space-x-2 px-4 py-2  px-b  hover:bg-white hover:text-black">
+          <Link to={"/"+forthLink} className="flex items-center space-x-2 px-4 py-2  px-b  hover:bg-white hover:text-black">
             <Users size={16} />
-            <span>Models</span>
-          </a>
-          <a href="#" className="flex items-center space-x-2 px-4  py-2  px-b  hover:bg-white hover:text-black">
+            <span>{forthLink}</span>
+          </Link>
+          <Link to={"/"+fifthLink} className="flex items-center space-x-2 px-4  py-2  px-b  hover:bg-white hover:text-black">
             <LineChart size={16} />
-            <span>Documentation</span>
-          </a>
-          <a href="#" className="flex items-center space-x-2 px-4  py-2  px-b  hover:bg-white hover:text-black">
+            <span>{fifthLink}</span>
+          </Link>   <a href="#" className="flex items-center space-x-2 px-4  py-2  px-b  hover:bg-white hover:text-black">
             <Calendar size={16} />
             <span>Settings</span>
           </a>
