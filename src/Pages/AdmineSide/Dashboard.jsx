@@ -1,15 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Sidebar from "@/components/ui/sidebar";
-import Component from "@/components/Custom/DonatChart";
 import CallCart from "@/components/Custom/DoctorCart";
 import DataTable from "@/components/Custom/AppointmentDataAdmin";
+import PieChartComponent, { RadialBarDiagram } from "@/components/Custom/DonatChart";
+import { RadialBarChart, RadialBar, PolarAngleAxis } from "recharts";
 
 export default function AdminDashboard() {
 
   return (
     <div className="flex justify-center  " >
       <div className="flex justify-center w-[1599px] bg-gradient-to-bl from-rose-100 via-gray-100 to-gray-200   ">
-        <Sidebar firstLink={"Home"} SecondLink={"Add Therapist"} thirdLink={"Add Admin"}  />
+        <Sidebar firstLink={"Home"} SecondLink={"Add Therapist"} thirdLink={"Add Admin"} forthLink={"Therapist Detail"} fifthLink={"FeedBacks"} />
         <main className="flex-1 p-6 grid grid-cols-3 gap-4  h-screen overflow-y-auto scrollbar-hide w-5">
           {/* Profile Card */}
           <Card className="col-span-1 p-4">
@@ -43,8 +44,8 @@ export default function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
-          <Component/>
-          <div>Komal</div>
+<RadialBarDiagram/>
+          <PieChartComponent/>
           {/* <Component/> */}
           <Card className="col-span-3 p-4">
             <CardContent>

@@ -18,7 +18,7 @@ import AdminLogin from "./Pages/AdmineSide/AdminLogin.jsx";
 import { AdminLoginProvider } from "./Context/AdminLoginContext.jsx";
 import TherapistDashboard from "./Pages/Therapist/TherapistDashBoard.jsx";
 import TherapistLogin from "./Pages/Therapist/TherapistLogin.jsx";
-import { TherapistLoginContext, TherapistLoginContextProvider } from "./Context/TherapistLoginContext.jsx";
+import { TherapistLoginContextProvider } from "./Context/TherapistLoginContext.jsx";
 import Appointment from "./Pages/PatientSide/Appointment.jsx";
 import AppLayout from "./components/Layout/AppLayout.jsx";
 import QuestioningPage from "./Pages/Questions/Couple/Question.jsx";
@@ -96,9 +96,9 @@ function App() {
         },{
           path:"/TherapistDashboard",
           element:(
-            <TherapistLoginContext>
+            <TherapistLoginContextProvider>
             <TherapistDashboard/>
-            </TherapistLoginContext>
+            </TherapistLoginContextProvider>
           )
         },
       ],
